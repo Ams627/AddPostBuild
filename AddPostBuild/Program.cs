@@ -109,7 +109,7 @@ internal class Program
             new XElement("Target",
                 new XAttribute("Name", "PostBuild"),
                 new XAttribute("AfterTargets", "PostBuildEvent"),
-                new XElement("Exec", new XAttribute("Command", $@""))));
+                new XElement("Exec", new XAttribute("Command", $@"echo copying $(TargetPath) to $(BinDir) && copy $(TargetPath) $(BinDir)"))));
         ;
 
         var settings = new XmlWriterSettings
