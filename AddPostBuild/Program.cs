@@ -33,11 +33,12 @@ internal class Program
                 var error = AddPostBuildCopy(file);
                 var message = error switch
                 {
-                    ProjectFileErrors.None => $"Updated file {file} to have a postbuild step",
-                    ProjectFileErrors.AlreadyHasPostBuild => $"File {file} already has a postbuild step",
+                    ProjectFileErrors.None => $"Updated file {file} to have a post-build step",
+                    ProjectFileErrors.AlreadyHasPostBuild => $"File {file} already has a post-build step",
                     ProjectFileErrors.NoProjectRoot => $"File {file} does not have <Project> as the root element",
                     ProjectFileErrors.NoSdkAttribute => $"File {file} has a <Project> root node but does not have an Sdk Attribute in the root node",
                     ProjectFileErrors.NoPropertyGroup => $"File {file} has a <Project> root node and Sdk attribute but does not have any PropertyGroup nodes",
+                    _ => throw new NotImplementedException(),
                 };
                 Console.WriteLine(message);
             }
